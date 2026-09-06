@@ -3,6 +3,8 @@
 //  SoundClassifier
 //
 
+//
+
 import Foundation
 
 /// What was heard, and when.
@@ -24,18 +26,9 @@ public struct SoundObservation: Sendable, Hashable, Codable {
     /// When it ended.
     public let end: TimeInterval
 
+    /// How long the sound lasted, in seconds.
     public var duration: TimeInterval { end - start }
 
     /// The label with underscores as spaces, for printing.
     public var name: String { label.replacingOccurrences(of: "_", with: " ") }
-}
-
-/// Every observation for one window, strongest first.
-public struct SoundWindow: Sendable, Hashable, Codable {
-    public let start: TimeInterval
-    public let end: TimeInterval
-    public let observations: [SoundObservation]
-
-    /// The strongest classification in this window.
-    public var top: SoundObservation? { observations.first }
 }

@@ -5,12 +5,14 @@
 
 import Foundation
 
+/// Why audio could not be classified.
 public enum ClassifierError: Error, LocalizedError, Equatable, Sendable {
 
     case unreadable(String)
     case unavailable(String)
     case tooShort(seconds: Double, needs: Double)
 
+    /// A one-line reason, for a CLI or a log.
     public var errorDescription: String? {
         switch self {
         case .unreadable(let path):
